@@ -19,6 +19,7 @@ interface ModelProps {
   children?: React.ReactNode;
 }
 
+// When the website intiate, a new dialog will be created
 export default function Modal({
   title,
   description,
