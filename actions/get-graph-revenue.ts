@@ -58,6 +58,5 @@ export const getGraphRevenue = async (
     graphData[parseInt(month)].total = monthlyRevenue[parseInt(month)];
   }
 
-  console.log(graphData);
   return graphData;
 };

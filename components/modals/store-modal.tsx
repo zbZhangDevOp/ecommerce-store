@@ -40,15 +40,11 @@ export const StoreModal = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-
     try {
       // ensure button cannot be clicked during loading
       setLoading(true);
 
       const response = await axios.post("/api/stores", values);
-
-      console.log(response.data);
 
       // reload the webpage after the creation rather than just redirect
       window.location.assign(`/${response.data.id}`);
