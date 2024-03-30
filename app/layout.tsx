@@ -1,16 +1,17 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-import { ClerkProvider } from '@clerk/nextjs';
-import ModalProvider from '@/providers/modal-provider';
-import { ToastProvider } from '@/providers/toast-provider';
+import { ClerkProvider } from "@clerk/nextjs";
+import ModalProvider from "@/providers/modal-provider";
+import { ToastProvider } from "@/providers/toast-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Admin Dash Board',
-  description: 'Admin Dash Board',
+  title: "Admin Dash Board",
+  description: "Admin Dash Board",
 };
 
 export default function RootLayout({
@@ -23,11 +24,18 @@ export default function RootLayout({
   // The modal provide is rendered when the global state is mounted
   return (
     <ClerkProvider>
-      <html lang='en'>
+      <html lang="en">
         <body className={inter.className}>
-          <ToastProvider />
-          <ModalProvider />
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ToastProvider />
+            <ModalProvider />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
